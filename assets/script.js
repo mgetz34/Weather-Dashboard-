@@ -36,14 +36,17 @@ function cityName(city) {
         return response.json()
     })
         .then(function (data) {
-            console.log(data)
+            console.log(data[0].lat, data[0].lon)
+
+            currentWeather(data[0].lat, data[0].lon)
         })
 }
 
 // function for current weather data
 
-function currentWeather(current) {
-    var currentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + current + "&appid=" + openWeatherAPI;
+function currentWeather(lat, lon) {
+    var currentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + openWeatherAPI;
+    console.log(currentWeatherUrl);
     fetch(currentWeatherUrl).then(function (response) {
         return response.json()
     })
