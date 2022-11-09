@@ -16,8 +16,49 @@
 // THEN I am again presented with current and future conditions for that city
 
 var openWeatherAPI = "71943e874f3a60eaa03270f17d4ac3ea";
-var city;
 
-var queryURL = "http://api.openweathermap.org/data/2.5/weather";
 
-fetch(queryURL)
+var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}"
+
+
+var searchForm = document.getElementById("search-form");
+
+var input = document.getElementById("city-search")
+
+
+function userInput(event) {
+    event.preventDefault()
+    cityName(input.value);
+}
+
+//function for city search 
+
+function cityName(city) {
+    var geoCodeUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + openWeatherAPI
+    // need to run fetch for geocode api
+    fetch(geoCodeUrl).then(function (response) {
+        return response.json()
+    })
+        .then(function (data) {
+            console.log(data)
+        })
+};
+
+// function for current weather data
+
+function currentWeather(lat, lon) {
+    var currentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + lat + lon + "&appid=" + openWeatherAPI
+    fetch(currentWeatherUrl).then(function (response) {
+        return response.json()
+    })
+        .then(function (data) {
+            console.log(data)
+        })
+};
+
+// function for forcast data
+
+
+
+
+searchForm.addEventListener("submit", userInput)
