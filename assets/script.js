@@ -44,21 +44,23 @@ function cityName(city) {
 
 // function for current weather data
 
-function currentWeather(lat, lon) {
-    var currentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + openWeatherAPI;
+function currentWeather(openWeatherAPI) {
+    var currentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?&appid=" + openWeatherAPI;
     console.log(currentWeatherUrl);
     fetch(currentWeatherUrl).then(function (response) {
         return response.json()
     })
         .then(function (data) {
-            console.log(data)
+            console.log(data.clouds.main.weather.wind)
+
+            forecast(data.clouds.main.weather.wind)
         })
 }
 
 // function for 5-day, 3-hour forecast data
 
-function forecast(forecast) {
-    var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + current + forecast + "&appid=" + openWeatherAPI;
+function forecast() {
+    var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?qlat=" + lat + "&lon=" + lon + "&appid=" + openWeatherAPI;
     fetch(forecastUrl).then(function (response) {
         return response.json()
     })
