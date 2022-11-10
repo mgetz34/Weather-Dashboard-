@@ -1,0 +1,14 @@
+body {
+    background-image: url("https://source.unsplash.com//1600x900/?landscape");
+}
+
+.header {
+    background: #6610f2;
+    font-weight: bolder;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.recent {
+    background-color: bisque;
+}
