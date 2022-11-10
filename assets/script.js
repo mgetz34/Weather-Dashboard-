@@ -21,13 +21,17 @@ var searchForm = document.getElementById("search-form");
 
 var input = document.getElementById("city-search")
 
+var current = document.getElementById("current")
+
+
+// function captures event of pressing search for input 
 
 function userInput(event) {
     event.preventDefault()
     cityName(input.value);
 }
 
-//function for city search 
+//function is responsible for the user city search term  
 
 function cityName(city) {
     var geoCodeUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + openWeatherAPI;
@@ -40,13 +44,17 @@ function cityName(city) {
 
             currentWeather(data[0].lat, data[0].lon)
         })
+
+    var h1El = document.createElement("h1")
+    h1El.textContent = data.list[0].main.temp
+    current.append(h1El)
 }
 
 // function for current weather data
 
 function currentWeather(lat, lon) {
     var currentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=lat" + lat + "&lon=" + lon + "&appid=" + openWeatherAPI;
-    console.log(currentWeatherUrl);
+    // console.log(currentWeatherUrl);
     fetch(currentWeatherUrl).then(function (response) {
         return response.json()
     })
@@ -69,6 +77,25 @@ function forecast(currentWeather) {
         })
 }
 
+// function for the dymanic creation of cards per the user's input
+
+function renderCards() {
+    //DOM MANIPULATION
+}
+
 
 
 searchForm.addEventListener("submit", userInput)
+
+
+//LOCAL STORAGE
+
+//CREATE AN EMPTY ARRAY IN GLOBAL SCOPE
+
+// PUSH USER INPUT TO THAT ARRAY (CITY)
+
+//["CITY", "DENVER", "SEATTLE"]
+
+//localStorage.getItem("cities")
+
+//localStorage.setItem("cities", )

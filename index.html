@@ -14,25 +14,32 @@
     <title>Weather Dashboard</title>
   </head>
   <body>
-    <header class="text-center header">
+    <header class="container-fluid text-center text-white bg-dark p-3">
       <h1>Weather Dashboard</h1>
     </header>
-    <main class="container row">
-      <div class="col-3">
-        <form id="search-form">
-          <label for="city">Search for City:</label>
-          <input type="text" name="city" id="city-search" />
-          <button type="submit">Search</button>
-        </form>
-        <hr />
-        <div>
-          <h3 class="recent">Recently Searched Cities</h3>
-          <div id="storedCities"></div>
+    <main class="container-fluid">
+      <div class="row">
+        <aside class="col-lg-3">
+          <form id="search-form">
+            <h2>Search for City:</h2>
+            <input
+              type="text"
+              class="form-control"
+              name="city"
+              id="city-search"
+            />
+            <button type="submit">Search</button>
+          </form>
+          <hr />
+          <div>
+            <h3 class="recent">Recently Searched Cities</h3>
+            <div id="storedCities"></div>
+          </div>
+        </aside>
+        <div class="col-12">
+          <div id="current" class="container"></div>
+          <div id="fiveDay"></div>
         </div>
-      </div>
-      <div class="col-9">
-        <div id="current" class="container"></div>
-        <div id="fiveDay"></div>
       </div>
     </main>
   </body>
