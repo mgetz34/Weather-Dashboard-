@@ -19,10 +19,11 @@ var openWeatherAPI = "71943e874f3a60eaa03270f17d4ac3ea";
 
 var searchForm = document.getElementById("search-form");
 
-var input = document.getElementById("city-search")
+var input = document.getElementById("city-search");
 
-var current = document.getElementById("current")
+var current = document.getElementById("current");
 
+var storedCities = [];
 
 // function captures event of pressing search for input 
 
@@ -66,6 +67,7 @@ function cityName(city) {
 //             console.log(data)
 //         })
 // }
+
 // 5-day / 3-hour api call
 // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
@@ -98,7 +100,7 @@ searchForm.addEventListener("submit", userInput)
 
 //CREATE AN EMPTY ARRAY IN GLOBAL SCOPE
 
-// PUSH USER INPUT TO THAT ARRAY (CITY)
+//PUSH USER INPUT TO THAT ARRAY (CITY)
 
 //["CITY", "DENVER", "SEATTLE"]
 
