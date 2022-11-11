@@ -3,7 +3,7 @@
 // AS A traveler, I WANT to see the weather outlook for multiple cities
 // SO THAT I can plan a trip accordingly
 
-// Acceptance Criteria 
+// Acceptance Criteria
 
 // GIVEN a weather dashboard with form inputs
 // WHEN I search for a city
@@ -31,7 +31,10 @@ function userInput(event) {
     cityName(input.value);
 }
 
-//function is responsible for the user city search term  
+// Geocoding api call
+// http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
+
+//function is responsible for the user city search conversion to lat and lon   
 
 function cityName(city) {
     var geoCodeUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + openWeatherAPI;
@@ -41,41 +44,43 @@ function cityName(city) {
     })
         .then(function (data) {
             console.log(data[0].lat, data[0].lon)
-
-            currentWeather(data[0].lat, data[0].lon)
         })
 
-    var h1El = document.createElement("h1")
-    h1El.textContent = data.list[0].main.temp
-    current.append(h1El)
+    currentWeather();
+
+    // var h1El = document.createElement("h1")
+    // h1El.textContent = data.list[0].main.temp
+    // current.append(h1El)
 }
 
-// function for current weather data
+// Current weather api call
+// https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+
+// function for finding current weather data with lat and lon
 
 function currentWeather(lat, lon) {
-    var currentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=lat" + lat + "&lon=" + lon + "&appid=" + openWeatherAPI;
-    // console.log(currentWeatherUrl);
+    var currentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + openWeatherAPI;
     fetch(currentWeatherUrl).then(function (response) {
-        return response.json()
-    })
-        .then(function (data) {
-            console.log(data.weather[0])
-
-            forecast(data.weather[0])
-        })
-}
-
-// function for 5-day, 3-hour forecast data
-
-function forecast(currentWeather) {
-    var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q=lat" + lat + "&lon=" + lon + "&appid=" + currentWeather + openWeatherAPI;
-    fetch(forecastUrl).then(function (response) {
         return response.json()
     })
         .then(function (data) {
             console.log(data)
         })
 }
+// 5-day / 3-hour api call
+// api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+
+// function for 5-day, 3-hour forecast data
+
+// function forecast(currentWeather) {
+//     var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q=lat" + lat + "&lon=" + lon + "&appid=" + currentWeather + openWeatherAPI;
+//     fetch(forecastUrl).then(function (response) {
+//         return response.json()
+//     })
+//         .then(function (data) {
+//             console.log(data)
+//         })
+// }
 
 // function for the dymanic creation of cards per the user's input
 
@@ -83,6 +88,8 @@ function renderCards() {
     //DOM MANIPULATION
 }
 
+
+// EVENT LISTNERS
 
 
 searchForm.addEventListener("submit", userInput)
