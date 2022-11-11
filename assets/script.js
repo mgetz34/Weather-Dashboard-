@@ -43,14 +43,11 @@ function cityName(city) {
         return response.json()
     })
         .then(function (data) {
-            console.log(data[0].lat, data[0].lon)
+            console.log(data[0].lat, data[0].lon);
         })
-
-    currentWeather();
-
-    // var h1El = document.createElement("h1")
-    // h1El.textContent = data.list[0].main.temp
-    // current.append(h1El)
+    var h1El = document.createElement("h1");
+    h1El.textContent = (data[0].lat, data[0].lon);
+    current.append(h1El);
 }
 
 // Current weather api call
@@ -58,15 +55,17 @@ function cityName(city) {
 
 // function for finding current weather data with lat and lon
 
-function currentWeather(lat, lon) {
-    var currentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + openWeatherAPI;
-    fetch(currentWeatherUrl).then(function (response) {
-        return response.json()
-    })
-        .then(function (data) {
-            console.log(data)
-        })
-}
+// function currentWeather(lat, lon) {
+//     var lat = ("data[0].lat");
+//     var lon = ("data[0].lat");
+//     var currentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + openWeatherAPI;
+//     fetch(currentWeatherUrl).then(function (response) {
+//         return response.json()
+//     })
+//         .then(function (data) {
+//             console.log(data)
+//         })
+// }
 // 5-day / 3-hour api call
 // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
