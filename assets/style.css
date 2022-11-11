@@ -1,5 +1,10 @@
 body {
     background-image: url("https://source.unsplash.com//1600x900/?landscape");
+    background-color: #cccccc;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-size: cover;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .header {
@@ -9,6 +14,16 @@ body {
     justify-content: flex-end;
 }
 
+.banner {
+    background-color: aliceblue;
+    text-align: center;
+    margin-left: 80px; 
+    margin-right: 80px;
+}
+
 .recent {
-    background-color: bisque;
+    background-color: rgb(231, 220, 207);
+    text-align: center;
+    margin-left: 60px;
+    margin-right: 60px;
 }

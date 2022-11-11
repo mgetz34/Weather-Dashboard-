@@ -11,6 +11,12 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap"
+      rel="stylesheet"
+    />
     <title>Weather Dashboard</title>
   </head>
   <body>
@@ -21,7 +27,7 @@
       <div class="row">
         <aside class="col-lg-3">
           <form id="search-form">
-            <h2>Search for City:</h2>
+            <h2 class="banner">Search for City:</h2>
             <input
               type="text"
               class="form-control"
@@ -33,12 +39,12 @@
           <hr />
           <div>
             <h3 class="recent">Recently Searched Cities</h3>
-            <div id="storedCities"></div>
+            <div id="storedCities col-lg-3"></div>
           </div>
         </aside>
-        <div class="col-12">
+        <div class="col-lg-12">
           <div id="current" class="container"></div>
-          <div id="fiveDay"></div>
+          <div id="fiveDay" class="forecastContainer"></div>
         </div>
       </div>
     </main>
