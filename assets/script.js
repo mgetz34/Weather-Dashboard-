@@ -95,6 +95,7 @@ function renderCards(forecastFiveday) {
         console.log(element);
         var card = document.createElement = ("div");
         forecastContainer.append(card);
+        card.append(data.dt_txt);
     }
 
 }
