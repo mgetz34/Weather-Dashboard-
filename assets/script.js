@@ -93,9 +93,7 @@ function renderCards(forecastFiveday) {
     for (let index = 0; index < forecastFiveday.length; index++) {
         const element = forecastFiveday[index];
         console.log(element);
-        var weather = document.createElement = ("div");
         var card = document.createElement = ("div");
-        forecastContainer.append(weather);
         forecastContainer.append(card);
     }
 
