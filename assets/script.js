@@ -23,6 +23,8 @@ var input = document.getElementById("city-search");
 
 var current = document.getElementById("current");
 
+var forecastContainer = document.getElementById("fiveDay");
+
 var storedCities = [];
 
 // function captures event of pressing search for input 
@@ -45,48 +47,56 @@ function cityName(city) {
     })
         .then(function (data) {
             console.log(data[0].lat, data[0].lon);
+            currentWeather(data[0].lat, data[0].lon)
+            forecast(data[0].lat, data[0].lon);
         })
-    var h1El = document.createElement("h1");
-    h1El.textContent = (data[0].lat, data[0].lon);
-    current.append(h1El);
 }
 
 // Current weather api call
 // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 
 // function for finding current weather data with lat and lon
+//  city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the wind speed
 
-// function currentWeather(lat, lon) {
-//     var lat = ("data[0].lat");
-//     var lon = ("data[0].lat");
-//     var currentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + openWeatherAPI;
-//     fetch(currentWeatherUrl).then(function (response) {
-//         return response.json()
-//     })
-//         .then(function (data) {
-//             console.log(data)
-//         })
-// }
+function currentWeather(lat, lon) {
+    var currentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial" + "&appid=" + openWeatherAPI;
+    fetch(currentWeatherUrl).then(function (response) {
+        return response.json()
+    })
+        .then(function (data) {
+            console.log(data)
+        })
+}
 
 // 5-day / 3-hour api call
 // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
 // function for 5-day, 3-hour forecast data
 
-// function forecast(currentWeather) {
-//     var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q=lat" + lat + "&lon=" + lon + "&appid=" + currentWeather + openWeatherAPI;
-//     fetch(forecastUrl).then(function (response) {
-//         return response.json()
-//     })
-//         .then(function (data) {
-//             console.log(data)
-//         })
-// }
+function forecast(lat, lon) {
+    var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + openWeatherAPI;
+    fetch(forecastUrl).then(function (response) {
+        return response.json()
+    })
+        .then(function (data) {
+
+            var weatherData = [];
+            weatherData.push(data.list[3], data.list[11], data.list[19], data.list[27], data.list[35])
+
+            renderCards(weatherData);
+        })
+}
 
 // function for the dymanic creation of cards per the user's input
 
-function renderCards() {
-    //DOM MANIPULATION
+function renderCards(forecastFiveday) {
+    for (let index = 0; index < forecastFiveday.length; index++) {
+        const element = forecastFiveday[index];
+        console.log(element);
+        var card = document.createElement = ("div");
+        forecastContainer.append(card);
+    }
+
 }
 
 
