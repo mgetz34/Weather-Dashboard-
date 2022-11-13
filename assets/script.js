@@ -93,22 +93,23 @@ function renderCards(forecastFiveday) {
     for (let index = 0; index < forecastFiveday.length; index++) {
         const element = forecastFiveday[index];
         console.log(element);
+        
         var card = document.createElement = ("div");
-        forecastContainer.append(element.dt_txt);
-        forecastContainer.append(element.weather[0].icon);
-        forecastContainer.append(element.wind.speed);
-        forecastContainer.append(element.main.temp);
-        forecastContainer.append(element.main.humidity);
+
+        var date = element.dt_txt;
+        var icon = element.weather[0].icon;
+        var temp = element.main.temp;
+        var speed = element.wind.speed;
+        var humidity = element.main.humidity;
+
 
     }
 
-}
+
+    // EVENT LISTNERS
 
 
-// EVENT LISTNERS
-
-
-searchForm.addEventListener("submit", userInput)
+    searchForm.addEventListener("submit", userInput)
 
 
 //LOCAL STORAGE
