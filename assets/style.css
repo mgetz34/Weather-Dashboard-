@@ -27,3 +27,8 @@ body {
     margin-left: 60px;
     margin-right: 60px;
 }
+
+.fiveDay {
+    background-color: aliceblue;
+    color: black;
+}
