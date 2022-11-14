@@ -115,25 +115,22 @@ function renderCards(forecastFiveday) {
         const element = forecastFiveday[index];
         console.log(element);
 
-        var card = document.createElement = ("div");
+        // var card = document.createElement = ("div");
 
-        var liEldate = document.createElement = ("li");
-        var liElicon = document.createElement = ("li");
-        var liEltemp = document.createElement = ("li");
-        var liElspeed = document.createElement = ("li");
-        var liElhumidity = document.createElement = ("li");
+        var liEldate = document.createElement("li");
+        var liElicon = document.createElement("li");
+        var liEltemp = document.createElement("li");
+        var liElspeed = document.createElement("li");
 
         liEldate.textContent = element.dt_txt;
         liElicon.textContent = element.weather[0].icon;
         liEltemp.textContent = element.main.temp + " °F";
         liElspeed.textContent = element.wind.speed + " /mph";
-        liElhumidity.textContent = element.main.humidity + " %";
 
         forecastContainer.append(liEldate);
         forecastContainer.append(liElicon);
         forecastContainer.append(liEltemp);
         forecastContainer.append(liElspeed);
-        forecastContainer.append(liElhumidity);
     }
 }
 // EVENT LISTNERS
