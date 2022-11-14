@@ -40,7 +40,7 @@ function userInput(event) {
 //function is responsible for the user city search conversion to lat and lon   
 
 function cityName(city) {
-    var geoCodeUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + openWeatherAPI;
+    var geoCodeUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + openWeatherAPI;
     // need to run fetch for geocode api
     fetch(geoCodeUrl).then(function (response) {
         return response.json()
@@ -58,7 +58,7 @@ function cityName(city) {
 //  city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the wind speed
 
 function currentWeather(lat, lon) {
-    var currentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial" + "&appid=" + openWeatherAPI;
+    var currentWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial" + "&appid=" + openWeatherAPI;
     console.log(currentWeatherUrl);
     fetch(currentWeatherUrl).then(function (response) {
         return response.json()
@@ -77,7 +77,7 @@ function currentWeather(lat, lon) {
 
             h1El.textContent = "Weather in: " + data.name;
             h2El.textContent = dateConversion;
-            h3El.innerHTML = "http://openweathermap.org/img/w/" + icon + ".png"
+            h3El.innerHTML = "https://openweathermap.org/img/w/" + icon + ".png"
             p1El.textContent = data.main.feels_like + " °F";
             p2El.textContent = "Wind: " + data.wind.speed + " /MPH"
 
@@ -95,7 +95,7 @@ function currentWeather(lat, lon) {
 // function for 5-day, 3-hour forecast data
 
 // function forecast(lat, lon) {
-//     var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + openWeatherAPI;
+//     var forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + openWeatherAPI;
 //     fetch(forecastUrl).then(function (response) {
 //         return response.json()
 //     })
