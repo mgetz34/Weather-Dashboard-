@@ -68,25 +68,24 @@ function currentWeather(lat, lon) {
 
             var h1El = document.createElement("h1");
             var h2El = document.createElement("h2");
+            var dateConversion = new Date(data.dt * 1000).toLocaleString();
+            var icon = data.weather[0].icon;
             var h3El = document.createElement("h3");
             var p1El = document.createElement("p");
             var p2El = document.createElement("p");
-            var p3El = document.createElement("p");
 
 
-            h1El.textContent = "Weather in " + data.name;
-            h2El.textContent = data.dt;
-            h3El.textContent = data.weather[0].icon.src = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
+            h1El.textContent = "Weather in: " + data.name;
+            h2El.textContent = dateConversion;
+            h3El.innerHTML = "http://openweathermap.org/img/w/" + icon + ".png"
             p1El.textContent = data.main.feels_like + " °F";
             p2El.textContent = "Wind: " + data.wind.speed + " /MPH"
-            p3El.textContent = data.main.humidity = " %";
 
             current.append(h1El);
             current.append(h2El);
             current.append(h3El);
             current.append(p1El);
             current.append(p2El);
-            current.append(p3El);
         });
 }
 
@@ -95,48 +94,48 @@ function currentWeather(lat, lon) {
 
 // function for 5-day, 3-hour forecast data
 
-// function forecast(lat, lon) {
-//     var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + openWeatherAPI;
-//     fetch(forecastUrl).then(function (response) {
-//         return response.json()
-//     })
-//         .then(function (data) {
+function forecast(lat, lon) {
+    var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + openWeatherAPI;
+    fetch(forecastUrl).then(function (response) {
+        return response.json()
+    })
+        .then(function (data) {
 
-//             var weatherData = [];
-//             weatherData.push(data.list[3], data.list[11], data.list[19], data.list[27], data.list[35])
+            var weatherData = [];
+            weatherData.push(data.list[3], data.list[11], data.list[19], data.list[27], data.list[35])
 
-//             renderCards(weatherData);
-//         })
-// }
+            renderCards(weatherData);
+        })
+}
 
 // function for the dymanic creation of 5 day forecast cards per the user's input
 
-// function renderCards(forecastFiveday) {
-//     for (let index = 0; index < forecastFiveday.length; index++) {
-//         const element = forecastFiveday[index];
-//         console.log(element);
+function renderCards(forecastFiveday) {
+    for (let index = 0; index < forecastFiveday.length; index++) {
+        const element = forecastFiveday[index];
+        console.log(element);
 
-//         var card = document.createElement = ("div");
+        var card = document.createElement = ("div");
 
-//         var liEldate = document.createElement = ("li");
-//         var liElicon = document.createElement = ("li");
-//         var liEltemp = document.createElement = ("li");
-//         var liElspeed = document.createElement = ("li");
-//         var liElhumidity = document.createElement = ("li");
+        var liEldate = document.createElement = ("li");
+        var liElicon = document.createElement = ("li");
+        var liEltemp = document.createElement = ("li");
+        var liElspeed = document.createElement = ("li");
+        var liElhumidity = document.createElement = ("li");
 
-//         liEldate.textContent = element.dt_txt;
-//         liElicon.textContent = element.weather[0].icon;
-//         liEltemp.textContent = element.main.temp + " °F";
-//         liElspeed.textContent = element.wind.speed + " /mph";
-//         liElhumidity.textContent = element.main.humidity + " %";
+        liEldate.textContent = element.dt_txt;
+        liElicon.textContent = element.weather[0].icon;
+        liEltemp.textContent = element.main.temp + " °F";
+        liElspeed.textContent = element.wind.speed + " /mph";
+        liElhumidity.textContent = element.main.humidity + " %";
 
-//         forecastContainer.append(liEldate);
-//         forecastContainer.append(liElicon);
-//         forecastContainer.append(liEltemp);
-//         forecastContainer.append(liElspeed);
-//         forecastContainer.append(liElhumidity);
-//     }
-// }
+        forecastContainer.append(liEldate);
+        forecastContainer.append(liElicon);
+        forecastContainer.append(liEltemp);
+        forecastContainer.append(liElspeed);
+        forecastContainer.append(liElhumidity);
+    }
+}
 // EVENT LISTNERS
 
 

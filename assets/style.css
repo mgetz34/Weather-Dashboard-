@@ -28,7 +28,14 @@ body {
     margin-right: 60px;
 }
 
-.fiveDay {
+#current {
+    background-color: bisque;
+    color: black;
+    font-weight: bolder;
+}
+
+#fiveDay {
     background-color: aliceblue;
     color: black;
+    padding-right: 80px;
 }
