@@ -94,45 +94,45 @@ function currentWeather(lat, lon) {
 
 // function for 5-day, 3-hour forecast data
 
-function forecast(lat, lon) {
-    var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + openWeatherAPI;
-    fetch(forecastUrl).then(function (response) {
-        return response.json()
-    })
-        .then(function (data) {
+// function forecast(lat, lon) {
+//     var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + openWeatherAPI;
+//     fetch(forecastUrl).then(function (response) {
+//         return response.json()
+//     })
+//         .then(function (data) {
 
-            var weatherData = [];
-            weatherData.push(data.list[3], data.list[11], data.list[19], data.list[27], data.list[35])
+//             var weatherData = [];
+//             weatherData.push(data.list[3], data.list[11], data.list[19], data.list[27], data.list[35])
 
-            renderCards(weatherData);
-        })
-}
+//             renderCards(weatherData);
+//         })
+// }
 
 // function for the dymanic creation of 5 day forecast cards per the user's input
 
-function renderCards(forecastFiveday) {
-    for (let index = 0; index < forecastFiveday.length; index++) {
-        const element = forecastFiveday[index];
-        console.log(element);
+// function renderCards(forecastFiveday) {
+//     for (let index = 0; index < forecastFiveday.length; index++) {
+//         const element = forecastFiveday[index];
+//         console.log(element);
 
-        // var card = document.createElement = ("div");
+//         // var card = document.createElement = ("div");
 
-        var liEldate = document.createElement("li");
-        var liElicon = document.createElement("li");
-        var liEltemp = document.createElement("li");
-        var liElspeed = document.createElement("li");
+//         var liEldate = document.createElement("li");
+//         var liElicon = document.createElement("li");
+//         var liEltemp = document.createElement("li");
+//         var liElspeed = document.createElement("li");
 
-        liEldate.textContent = element.dt_txt;
-        liElicon.textContent = element.weather[0].icon;
-        liEltemp.textContent = element.main.temp + " °F";
-        liElspeed.textContent = element.wind.speed + " /mph";
+//         liEldate.textContent = element.dt_txt;
+//         liElicon.textContent = element.weather[0].icon;
+//         liEltemp.textContent = element.main.temp + " °F";
+//         liElspeed.textContent = element.wind.speed + " /mph";
 
-        forecastContainer.append(liEldate);
-        forecastContainer.append(liElicon);
-        forecastContainer.append(liEltemp);
-        forecastContainer.append(liElspeed);
-    }
-}
+//         forecastContainer.append(liEldate);
+//         forecastContainer.append(liElicon);
+//         forecastContainer.append(liEltemp);
+//         forecastContainer.append(liElspeed);
+//     }
+// }
 // EVENT LISTNERS
 
 
